@@ -106,6 +106,8 @@ public class Practica1 {
         String aux;
         String nombre;
         float importe;
+        float gastos_fijos;
+        float gastos_variables;
         int clientes;
         Scanner scan = new Scanner(System.in);
 
@@ -121,8 +123,19 @@ public class Practica1 {
         aux = scan.next();
         pruebayagarra(aux, 1);
         clientes = Integer.parseInt(aux);
+        
+        System.out.println("Introduce los gastos fijos anuales.");
+        aux = scan.next();
+        pruebayagarra(aux, 2);
+        gastos_fijos = Float.parseFloat(aux);
+        
+        System.out.println("Introduce los gastos fijos anuales.");
+        aux = scan.next();
+        pruebayagarra(aux, 2);
+        gastos_variables = Float.parseFloat(aux);
+        
 
-        Equipo a = new Equipo(nombre, importe, clientes);
+        Equipo a = new Equipo(nombre, importe, clientes, gastos_fijos, gastos_variables);
 
         return a;
     }
