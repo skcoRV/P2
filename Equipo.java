@@ -17,40 +17,30 @@ public class Equipo {
     private float importe_caja;
     private int numero_abonados;
     private ArrayList<Jugador> jugadores;
-    private float gastos_fijos;
-    private float gastos_variables;
+    private float gastos_globales;
     private int id_equipo;
     private static int contador_equipo = 1;
 
-    public Equipo(String team_name, float team_money, int clients, float gf, float ga) {
+    public Equipo(String team_name, float team_money, int clients, float gg) {
         nombre_equipo = team_name;
         importe_caja = team_money;
         numero_abonados = clients;
         jugadores = new ArrayList<>();
-        gastos_fijos = gf;
-        gastos_variables = ga;
+        gastos_globales = gg;
         id_equipo = contador_equipo;
         contador_equipo++;
-    }
-
-    public void setGastos_fijos(float gastos_fijos) {
-        this.gastos_fijos = gastos_fijos;
-    }
-
-    public void setGastos_variables(float gastos_variables) {
-        this.gastos_variables = gastos_variables;
     }
 
     public String getNombre_equipo() {
         return nombre_equipo;
     }
 
-    public float getGastos_fijos() {
-        return gastos_fijos;
+    public float getGastos_globales() {
+        return gastos_globales;
     }
 
-    public float getGastos_variables() {
-        return gastos_variables;
+    public void setGastos_globales(float gastos_globales) {
+        this.gastos_globales = gastos_globales;
     }
 
     public float getImporte_caja() {
@@ -118,7 +108,6 @@ public class Equipo {
                 + "\nNombre: " + nombre_equipo
                 + "\nImporte: " + Float.toString(importe_caja)
                 + "\nNumero de abonados: " + Integer.toString(numero_abonados)
-                + "\nGastos fijos anuales: " + Float.toString(gastos_fijos)
-                + "\nGastos variables anuales: " + Float.toString(gastos_variables);
+                + "\nGastos globales: " + Float.toString(gastos_globales);
     }
 }
