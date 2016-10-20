@@ -16,6 +16,10 @@ public class Jugador {
     private String demarcacion;
     private float importe_clausula;
     private int id_jugador;
+
+    public void setDemarcacion(String demarcacion) {
+        this.demarcacion = demarcacion;
+    }
     private static int contador_jugador = 1;
 
     public Jugador(String name, String team, String position, float money) {

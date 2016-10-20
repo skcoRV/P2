@@ -36,7 +36,8 @@ public class Practica1 {
                     + "4. Listar en pantalla los datos de los equipos registrados.\n"
                     + "5. Listar los jugadores de cada equipo.\n"
                     + "6. Mostrar los traspasos realizados.\n"
-                    + "7. Salir del programa.\n");
+                    + "7. Cambiar la demarcacion de un jugador\n"
+                    + "8. Salir del programa.\n");
             String a = scan.next();
 
             if (pruebayagarra(a, 1)) {
@@ -71,14 +72,18 @@ public class Practica1 {
                     case 6:
                         mostrarTraspasos(traspasos);
                         break;
+                    
                     case 7:
+                        cambiarDemarcacion(equipos);
+                        break;
+                    case 8:
                         escribirFichero(equipos, traspasos);
                         break;
                     default:
                         break;    
                 }
             }
-        } while (opc != 7);
+        } while (opc != 8);
 
         scan.close();
         System.exit(0);
@@ -149,7 +154,7 @@ public class Practica1 {
         equipo = scan.nextLine();
         
         do{
-        System.out.println("Introduce su posicion");
+        System.out.println("Introduce su posicion(portero|delantero|defensa|medio)");
         demarcacion = scan.nextLine();
         }while(!demarcacion.matches("portero|delantero|defensa|medio"));
             
@@ -274,5 +279,37 @@ public class Practica1 {
         }catch(IOException exception){};
         
         scan.close();
+    }
+    
+    public static void cambiarDemarcacion(ArrayList<Equipo> equipos){
+        Scanner scan = new Scanner(System.in);
+        boolean encontrado = false;
+        String nombre_jug;
+        String nombre_equipo;
+        String demarcacion;
+        
+        System.out.println("Introduce el nombre del equipo del jugador");
+        nombre_equipo = scan.nextLine();
+        for(Equipo eaux: equipos){
+            if( nombre_equipo.equals(eaux.getNombre_equipo()) ){
+                encontrado = true;
+                System.out.println("Introduce el nombre del jugador");
+                nombre_jug = scan.nextLine();
+                System.out.println("Introduce su posicion(portero|delantero|defensa|medio)");
+                demarcacion = scan.nextLine();
+                
+                if(eaux.cambiarDemarcacionJugador(nombre_jug, demarcacion)){
+                    System.out.println("Demarcacion cambiada");
+                }
+                else{
+                    System.out.println("Jugador no encontrado");
+                }
+                
+            }
+        }
+        
+        if(!encontrado){
+            System.out.println("Equipo no encontrado");
+        }
     }
 }

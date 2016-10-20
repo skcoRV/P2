@@ -86,6 +86,20 @@ public class Equipo {
        
         jugadores.remove(j);
     }
+    
+    public boolean cambiarDemarcacionJugador(String nombre_jug, String dem){
+        boolean correcto = false;
+        Jugador jug = getJugador(nombre_jug);
+        
+        if(jug != null){
+            jugadores.remove(jug);
+            jug.setDemarcacion(dem);
+            jugadores.add(jug);
+            correcto = true;
+        }
+
+        return correcto;
+    }
 
     public void setNumero_abonados(int numero_abonados) {
         this.numero_abonados = numero_abonados;
